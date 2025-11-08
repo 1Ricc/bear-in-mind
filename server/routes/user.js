@@ -1,5 +1,5 @@
 import express from 'express';
-import { authenticateToken } from @/assets/icon.png'../middleware/auth.js';
+import { authenticateToken } from '../middleware/auth.js';
 import { Client } from '@microsoft/microsoft-graph-client';
 import db from '../db/database.js';
 import path from 'path';
@@ -9,7 +9,7 @@ const router = express.Router();
 // All routes require authentication
 router.use(authenticateToken);
 
-/*
+/**
  * GET /api/user/me
  * Get current user's profile from local database
  */
