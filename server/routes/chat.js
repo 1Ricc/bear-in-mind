@@ -63,7 +63,7 @@ Do not make up activities that don't exist in the app.`;
     const model = genAI.getGenerativeModel({
       model: 'gemini-2.5-flash',
       systemInstruction: systemPrompt,
-      generationConfig: { maxOutputTokens: 300 },
+      generationConfig: { maxOutputTokens: 500 },
     });
 
     const chat = model.startChat({ history: geminiHistory });
