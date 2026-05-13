@@ -24,7 +24,7 @@ routes/chat.js (Express)
     │
     ├──► SQLite DB  (fetch user's points, co2, team, recent activities)
     │
-    └──► Claude API  (claude-haiku-4-5, system prompt + messages[])
+    └──► Gemini API  (gemini-1.5-flash, system prompt + messages[])
              │
              ▼
          { reply: string }  ──► ChatBot.vue
@@ -106,10 +106,10 @@ app.use('/api/chat', chatRoutes);
 
 Add to `.env`:
 ```
-ANTHROPIC_API_KEY=your_key_here
+GEMINI_API_KEY=your_key_here
 ```
 
-Install: `npm install @anthropic-ai/sdk`
+Install: `npm install @google/generative-ai`
 
 ---
 
@@ -192,6 +192,6 @@ const res = await fetch('/api/chat', {
 | `server/routes/chat.js` | New file — chat route |
 | `server/index.js` | Register `/api/chat` route |
 | `server/.env` | Add `ANTHROPIC_API_KEY` |
-| `server/package.json` | Add `@anthropic-ai/sdk` |
+| `server/package.json` | Add `@google/generative-ai` |
 | `frontend/src/components/ChatBot.vue` | New file — chatbot component |
 | `frontend/src/App.vue` | Mount `<ChatBot />` |
