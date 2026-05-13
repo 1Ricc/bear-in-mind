@@ -45,6 +45,7 @@ AZURE_CLIENT_ID=dev-placeholder
 AZURE_TENANT_ID=dev-placeholder
 AZURE_CLIENT_SECRET=dev-placeholder
 REDIRECT_URI=http://localhost:3001/api/auth/callback
+GEMINI_API_KEY=your_key_here
 ```
 
 Then install, initialize and seed the database, and start the server:
