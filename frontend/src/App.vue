@@ -1,10 +1,10 @@
-<!-- src/App.vue -->
 <template>
   <router-view />
+  <ChatBot />
 </template>
 
 <script setup>
-// Никакой логики здесь не нужно
+import ChatBot from '@/components/ChatBot.vue';
 </script>
 
 <style>
