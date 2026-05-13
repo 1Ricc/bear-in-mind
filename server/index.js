@@ -12,6 +12,7 @@ import userRoutes from './routes/user.js';
 import teamRoutes from './routes/team.js';
 import teamsRoutes from './routes/teams.js';
 import activitiesRoutes from './routes/activities.js';
+import chatRoutes from './routes/chat.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -41,6 +42,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/user', teamRoutes); // Team routes are under /api/user/me/team
 app.use('/api/teams', teamsRoutes);
 app.use('/api/activities', activitiesRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
