@@ -67,9 +67,8 @@
 
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'; // Добавьте onMounted
-// import { ref, computed, onMounted } from 'vue';
-import { useUser } from '@/composables/useUser';
+import { ref, computed, onMounted } from 'vue';
+import { useUser, ensureToken } from '@/composables/useUser';
 import { useTeams } from '@/composables/useTeams';
 
 // const activityInputValue = ref(null);
@@ -90,7 +89,8 @@ const allActivities = ref([]);
 // --- НОВОЕ: Функция для загрузки данных ---
 async function fetchActivities() {
 	try {
-		const token = localStorage.getItem('jwt_token'); // Нужен токен!
+		await ensureToken();
+		const token = localStorage.getItem('jwt_token');
 		if (!token) {
 			console.error("No token available for fetching activities.");
 			return;

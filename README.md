@@ -19,65 +19,57 @@ This is a web application designed to gamify ESG initiatives within a company. U
 
 ### Prerequisites
 
-*   [Node.js](https://nodejs.org/) (v18+ recommended).
-*   `npm` (is installed with Node.js).
+*   [Node.js](https://nodejs.org/) (v18+ recommended)
+*   `npm` (bundled with Node.js)
 
-### 1. Installation
+### 1. Clone the repository
 
-Clone the repository to your local machine:
 ```bash
 git clone <your-repository-url>
 cd <repository-folder-name>
 ```
 
-### 2. Setup and Run the Backend (Server)
-
-Open your **first terminal**.
+### 2. Backend setup (Terminal 1)
 
 ```bash
-# 1. Navigate to the server directory
 cd server
-
-# 2. Create a .env configuration file
-#    Copy the content below into a new ./server/.env file
 ```
 
-Contents for the **`.env`** file:
+Create a `server/.env` file with the following contents:
+
 ```env
-# ./server/.env
 PORT=3001
 JWT_SECRET=a_very_strong_secret_key_for_testing
 DATABASE_PATH=./database.sqlite
+AZURE_CLIENT_ID=dev-placeholder
+AZURE_TENANT_ID=dev-placeholder
+AZURE_CLIENT_SECRET=dev-placeholder
+REDIRECT_URI=http://localhost:3001/api/auth/callback
 ```
 
+Then install, initialize and seed the database, and start the server:
+
 ```bash
-# 3. Install dependencies, initialize, and seed the database
 npm install
 npm run init-db
 npm run seed-db
-
-# 4. Run the server in development mode
 npm run dev
 ```
-The server will be running at `http://localhost:3001`. Keep this terminal open.
 
-### 3. Setup and Run the Frontend (Client)
+The server runs at `http://localhost:3001`. Keep this terminal open.
 
-Open a **second terminal**.
+### 3. Frontend setup (Terminal 2)
 
 ```bash
-# 1. Navigate to the frontend directory
 cd frontend
-
-# 2. Install dependencies
 npm install
-
-# 3. Run the client in development mode
 npm run dev
 ```
 
-### 4. All Set!
+### 4. Open the app
 
-The application will be available at the URL provided by Vite (usually **`http://localhost:5173`**). Open this link in your browser.
+Visit **`http://localhost:5173`** in your browser.
 
-The app uses a mock authentication for development, which will automatically create a test user and provide a session token.
+On first load the app automatically signs in as a test user via the `/api/auth/dummy-login` endpoint — no manual login step required. The test user starts with seeded activity data so you can explore the island and stats views immediately.
+
+> **Note:** The Azure AD / Microsoft 365 OAuth flow (`/api/auth/signin`) is only active in production with real credentials. The placeholder values in the `.env` above are sufficient for local development.

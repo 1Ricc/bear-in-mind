@@ -2,15 +2,23 @@
 
 import { ref } from 'vue';
 
-// Глобальная переменная для хранения данных пользователя
 const user = ref(null);
-
-// Глобальная переменная для состояния загрузки
 const isLoading = ref(false);
 
+export async function ensureToken() {
+  if (localStorage.getItem('jwt_token')) return;
+  try {
+    const res = await fetch('/api/auth/dummy-login');
+    const data = await res.json();
+    if (data.token) localStorage.setItem('jwt_token', data.token);
+  } catch (e) {
+    console.error('Auto-login failed:', e);
+  }
+}
+
 export function useUser() {
-  // Функция для загрузки или обновления данных пользователя
   const fetchUser = async () => {
+    await ensureToken();
     const token = localStorage.getItem('jwt_token');
     if (!token) {
       user.value = null;
